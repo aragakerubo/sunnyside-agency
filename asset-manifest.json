@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.js": "/sunnyside-agency/static/js/main.d4ea51cc.js",
+    "static/media/mae-mu-1APtYqzNajA-unsplash.jpg": "/sunnyside-agency/static/media/mae-mu-1APtYqzNajA-unsplash.bfd03a4fb529097dc0f3.jpg",
+    "static/media/mae-mu-40NjbC-Q-cw-unsplash.jpg": "/sunnyside-agency/static/media/mae-mu-40NjbC-Q-cw-unsplash.d79594bb1b4a98abb3db.jpg",
+    "static/media/mae-mu-vbAEHCrvXZ0-unsplash.jpg": "/sunnyside-agency/static/media/mae-mu-vbAEHCrvXZ0-unsplash.73987bbf7c77ed1460ae.jpg",
+    "static/media/mae-mu-U1iYwZ8Dx7k-unsplash.jpg": "/sunnyside-agency/static/media/mae-mu-U1iYwZ8Dx7k-unsplash.597e7fa2fc3dba092cd2.jpg",
+    "static/media/mae-mu-GnWKTJlMYsQ-unsplash.jpg": "/sunnyside-agency/static/media/mae-mu-GnWKTJlMYsQ-unsplash.cd83c9c630b8b217424a.jpg",
+    "static/media/Bitmap4.jpg": "/sunnyside-agency/static/media/Bitmap4.7266a3f5758d905533d5.jpg",
+    "static/media/Bitmap2.jpg": "/sunnyside-agency/static/media/Bitmap2.3c5663d38140379a43eb.jpg",
+    "static/media/Bitmap3.jpg": "/sunnyside-agency/static/media/Bitmap3.e7524429d00bd3d269fa.jpg",
+    "static/media/Bitmap1.jpg": "/sunnyside-agency/static/media/Bitmap1.db44ff8505d0e648ad50.jpg",
+    "static/media/sunnysideLogo.svg": "/sunnyside-agency/static/media/sunnysideLogo.dbc1ed07b66d07b665890d0f20564bde.svg",
+    "static/media/logo.svg": "/sunnyside-agency/static/media/logo.4271b8992622e4dd1cc7de08466dab06.svg",
+    "static/media/icon-instagram.svg": "/sunnyside-agency/static/media/icon-instagram.7d97118aca6da4dd308fbe5b0ad8b9d6.svg",
+    "index.html": "/sunnyside-agency/index.html",
+    "static/media/icon-pinterest.svg": "/sunnyside-agency/static/media/icon-pinterest.fd8b84da3f15023f2ae8d359495f43db.svg",
+    "static/media/icon-twitter.svg": "/sunnyside-agency/static/media/icon-twitter.23df5d421d6e70c35715be06e375f403.svg",
+    "static/media/icon-facebook.svg": "/sunnyside-agency/static/media/icon-facebook.101bd07e99eaeae8b0f594d4908d92b0.svg",
+    "static/media/icon-arrow-down.svg": "/sunnyside-agency/static/media/icon-arrow-down.979ef07a7cbb07d35f05bbaa093f7489.svg",
+    "static/media/icon-hamburger.svg": "/sunnyside-agency/static/media/icon-hamburger.7764b7eb6060edb45161f8b146f1373c.svg",
+    "main.d4ea51cc.js.map": "/sunnyside-agency/static/js/main.d4ea51cc.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.d4ea51cc.js"
+  ]
+}
