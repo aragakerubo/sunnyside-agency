@@ -55,6 +55,10 @@ export const Nav = styled.ul`
 	gap: 45px;
 
 	li {
+		display: flex;
+	}
+
+	li a {
 		font-family: "Barlow";
 		font-style: normal;
 		font-weight: 600;
@@ -65,7 +69,13 @@ export const Nav = styled.ul`
 		cursor: pointer;
 	}
 
-	li.contact-button {
+	li a:hover,
+	li a:active,
+	li a:focus {
+		color: var(--white);
+	}
+
+	li.contact-button a {
 		font-family: "Fraunces", Garamond, serif;
 		font-style: normal;
 		font-weight: 700;
@@ -79,7 +89,7 @@ export const Nav = styled.ul`
 		border-radius: 28px;
 	}
 
-	li.contact-button:hover {
+	li.contact-button a:hover {
 		color: var(--white);
 		background-color: var(--whiteDesat);
 	}
@@ -94,16 +104,22 @@ export const Nav = styled.ul`
 		padding: 40px 0;
 		background-color: var(--white);
 
-		li {
+		li a {
 			color: var(--grayishBlue);
 		}
 
-		li.contact-button {
+		li a:hover,
+		li a:active,
+		li a:focus {
+			color: var(--grayishBlue);
+		}
+
+		li.contact-button a {
 			color: var(--veryDarkDesatBlue);
 			background-color: var(--yellow);
 		}
 
-		li.contact-button:hover {
+		li.contact-button a:hover {
 			color: var(--veryDarkDesatBlue);
 			background-color: var(--yellow);
 		}

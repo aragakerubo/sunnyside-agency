@@ -16,13 +16,19 @@ import Pinterest from "../../images/icon-pinterest.svg";
 
 export default function SixthSection() {
 	return (
-		<Wrapper>
+		<Wrapper id="contact">
 			<ContainerTitle>
 				<Logo src={LogoImg} />
 				<Menu>
-					<li>About</li>
-					<li>Services</li>
-					<li>Projects</li>
+					<li>
+						<a href="#about">About</a>
+					</li>
+					<li>
+						<a href="#services">Services</a>
+					</li>
+					<li>
+						<a href="#projects">Projects</a>
+					</li>
 				</Menu>
 			</ContainerTitle>
 			<ContainerSocials>

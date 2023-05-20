@@ -10,7 +10,7 @@ import backgroundImage4 from "../../images/mae-mu-U1iYwZ8Dx7k-unsplash.jpg";
 
 export default function ThirdSection() {
 	return (
-		<Wrapper>
+		<Wrapper id="services">
 			<LargePicture
 				backgroundImage={backgroundImage3}
 				heading={Heading3}

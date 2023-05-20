@@ -22,11 +22,19 @@ export const GlobalStyles = createGlobalStyle`
         box-sizing: border-box;
     }
 
+    html {
+        scroll-behavior: smooth;
+    }
+
     body {
         margin: 0;
         padding: 0;
         -ms-overflow-style: none;
         scrollbar-width: none;
+
+        a {
+            text-decoration: none;
+        }
 
         h1, h2 {
             margin: 0;

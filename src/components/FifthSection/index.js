@@ -16,5 +16,5 @@ export default function FifthSection() {
 		);
 	});
 
-	return <Wrapper>{Projects}</Wrapper>;
+	return <Wrapper id="projects">{Projects}</Wrapper>;
 }

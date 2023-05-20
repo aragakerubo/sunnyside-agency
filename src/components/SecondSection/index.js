@@ -11,7 +11,7 @@ import backgroundImage2 from "../../images/mae-mu-GnWKTJlMYsQ-unsplash.jpg";
 
 export default function SecondSection() {
 	return (
-		<Wrapper>
+		<Wrapper id="about">
 			<LargeTextBox
 				heading={Heading1}
 				info={Info1}

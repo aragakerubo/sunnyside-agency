@@ -27,6 +27,10 @@ export const Menu = styled.ul`
 	margin: 0;
 
 	li {
+		display: flex;
+	}
+
+	li a {
 		list-style: none;
 		font-family: "Barlow";
 		font-style: normal;
@@ -39,7 +43,9 @@ export const Menu = styled.ul`
 		cursor: pointer;
 	}
 
-	li:hover {
+	li a:hover,
+	li a:active,
+	li a:focus {
 		color: var(--white);
 	}
 `;
