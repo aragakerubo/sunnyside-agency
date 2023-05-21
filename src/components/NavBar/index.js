@@ -13,7 +13,8 @@ import BarIconImg from "../../images/icon-hamburger.svg";
 
 export default function NavBar() {
 	const [active, setActive] = useState(false);
-	const ref = useRef(null);
+	const menuRef = useRef(null);
+	const navBarIconRef = useRef(null);
 
 	function handleActive() {
 		setActive((prevState) => !prevState);
@@ -21,7 +22,14 @@ export default function NavBar() {
 
 	useEffect(() => {
 		function handleClickOutside(event) {
-			if (ref.current && !ref.current.contains(event.target)) {
+			if (
+				navBarIconRef.current &&
+				navBarIconRef.current.contains(event.target)
+			) {
+				return;
+			}
+
+			if (menuRef.current && !menuRef.current.contains(event.target)) {
 				setActive(false);
 			}
 		}
@@ -30,14 +38,14 @@ export default function NavBar() {
 		return () => {
 			document.removeEventListener("mousedown", handleClickOutside);
 		};
-	}, [ref]);
+	}, [menuRef, navBarIconRef]);
 
 	return (
 		<Wrapper>
 			<Logo src={LogoImage} />
 			<Container active={active}>
 				<Triangle />
-				<Nav ref={ref}>
+				<Nav ref={menuRef}>
 					<li>
 						<a href="#about" onClick={handleActive}>
 							About
@@ -60,7 +68,11 @@ export default function NavBar() {
 					</li>
 				</Nav>
 			</Container>
-			<BarIcon src={BarIconImg} onClick={handleActive} />
+			<BarIcon
+				ref={navBarIconRef}
+				src={BarIconImg}
+				onClick={handleActive}
+			/>
 		</Wrapper>
 	);
 }
