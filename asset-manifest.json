@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/sunnyside-agency/static/js/main.e4298e02.js",
+    "main.js": "/sunnyside-agency/static/js/main.2dfeae2f.js",
     "static/media/mae-mu-1APtYqzNajA-unsplash.jpg": "/sunnyside-agency/static/media/mae-mu-1APtYqzNajA-unsplash.bfd03a4fb529097dc0f3.jpg",
     "static/media/mae-mu-40NjbC-Q-cw-unsplash.jpg": "/sunnyside-agency/static/media/mae-mu-40NjbC-Q-cw-unsplash.d79594bb1b4a98abb3db.jpg",
     "static/media/mae-mu-vbAEHCrvXZ0-unsplash.jpg": "/sunnyside-agency/static/media/mae-mu-vbAEHCrvXZ0-unsplash.73987bbf7c77ed1460ae.jpg",
@@ -19,9 +19,9 @@
     "static/media/icon-facebook.svg": "/sunnyside-agency/static/media/icon-facebook.101bd07e99eaeae8b0f594d4908d92b0.svg",
     "static/media/icon-arrow-down.svg": "/sunnyside-agency/static/media/icon-arrow-down.979ef07a7cbb07d35f05bbaa093f7489.svg",
     "static/media/icon-hamburger.svg": "/sunnyside-agency/static/media/icon-hamburger.7764b7eb6060edb45161f8b146f1373c.svg",
-    "main.e4298e02.js.map": "/sunnyside-agency/static/js/main.e4298e02.js.map"
+    "main.2dfeae2f.js.map": "/sunnyside-agency/static/js/main.2dfeae2f.js.map"
   },
   "entrypoints": [
-    "static/js/main.e4298e02.js"
+    "static/js/main.2dfeae2f.js"
   ]
 }
