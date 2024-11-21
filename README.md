@@ -1,70 +1,149 @@
-# Getting Started with Create React App
+## **Deploy React App on EKS with Fargate**
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### **1\. Prerequisites**
 
-## Available Scripts
+Ensure you have:
 
-In the project directory, you can run:
+1. **React Application** ready for deployment.
+2. **AWS CLI** configured with appropriate permissions.
+3. **kubectl** and **[eksctl](https://eksctl.io/installation/)** installed.
+4. **Docker** installed for containerizing the app.
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### **2\. Clone the Repository**
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Clone the `chore-docker-setup` branch of the repository:
 
-### `npm test`
+```bash
+git clone -b chore-docker-setup https://github.com/aragakerubo/sunnyside-agency.git cd sunnyside-agency
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+### **3\. Build and Push the Docker Image**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. **Build the Docker Image**: The project should have a `Dockerfile`. We can go ahead and build an image from this:
+   
+    ```bash
+   docker build -t sunnyside-react-app .
+    ```
+    
+2. **Push to Amazon Elastic Container Registry (ECR)**:
+    
+    - Authenticate to ECR:
+        
+        ```bash
+        aws ecr get-login-password --region <your-region> | docker login --username AWS --password-stdin <your-account-id>.dkr.ecr.<your-region>.amazonaws.com
+        ```
+        
+    - Create an ECR repository:
+        
+        ```bash        
+        aws ecr create-repository --repository-name sunnyside-react-app
+        ```
+        
+    - Tag and push the image:
+        
+        ```bash
+        docker tag sunnyside-react-app:latest <your-account-id>.dkr.ecr.<your-region>.amazonaws.com/sunnyside-react-app:latest
+        docker push <your-account-id>.dkr.ecr.<your-region>.amazonaws.com/sunnyside-react-app:latest
+        ```
+        
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### **4\. Set Up EKS with Fargate**
 
-### `npm run eject`
+### Step 1: Create an EKS Cluster with Fargate
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Use `eksctl` to create an EKS cluster with the name `sunnyside-react-eks-cluster`:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+eksctl create cluster \
+--name sunnyside-react-eks-cluster \
+--region <your-region> \
+--fargate
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+This command:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- Creates a new EKS cluster named `sunnyside-react-eks-cluster`.
+- Enables Fargate for serverless container management.
 
-## Learn More
+Confirm the cluster is running:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+eksctl get cluster --name sunnyside-react-eks-cluster
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
+### **5\. Deploy the React App to EKS**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+#### Step 1: Create Kubernetes Deployment and Service Files
 
-### Analyzing the Bundle Size
+1. **Edit the `deployment.yaml` file**: Paste in the image URI from AWS ECR
+    
+    ```yaml
+    spec:
+      containers:
+      - name: react-app
+        image: <your-account-id>.dkr.ecr.<your-region>.amazonaws.com/sunnyside-react-app:latest
+        ports:
+        - containerPort: 80
+    ```
+    
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+---
 
-### Making a Progressive Web App
+#### Step 2: Apply the Configurations
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+1. Deploy the React app to Kubernetes:
+    
+    ```bash    
+    kubectl apply -f deployment.yaml
+    ```
+    
+2. Expose the service using a load balancer:
+    
+    ```bash    
+    kubectl apply -f service.yaml
+    ```
+    
+3. Verify the deployment and service:
+    
+    ```bash    
+    kubectl get pods kubectl get services
+    ```
+    
 
-### Advanced Configuration
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### **6\. Access the Application**
 
-### Deployment
+Once the LoadBalancer is ready, retrieve its external IP:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```bash
+kubectl get service react-app-service
+```
 
-### `npm run build` fails to minify
+Open the external IP in your browser to access the React app.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+
+### **7\. Clean Up Resources**
+
+To avoid incurring charges, delete the resources when you're done:
+
+```bash
+eksctl delete cluster --name sunnyside-react-eks-cluster
+```
+
+---
+
+### **8\. Optional Enhancements**
+
+- **Custom Domain**: Use **AWS Route 53** to map the LoadBalancer to a custom domain.
+- **SSL**: Integrate **AWS Certificate Manager (ACM)** for HTTPS.
+- **CI/CD Pipeline**: Automate deployment with **AWS CodePipeline** or GitHub Actions.
