@@ -1,4 +1,4 @@
-## **Deploy React App on EKS with Fargate**
+# **Deploy React App on EKS with Fargate**
 
 ### **1\. Prerequisites**
 
@@ -55,7 +55,7 @@ git clone -b chore-docker-setup https://github.com/aragakerubo/sunnyside-agency.
 
 ### **4\. Set Up EKS with Fargate**
 
-### Step 1: Create an EKS Cluster with Fargate
+#### Create an EKS Cluster with Fargate
 
 Use `eksctl` to create an EKS cluster with the name `sunnyside-react-eks-cluster`:
 
@@ -81,9 +81,9 @@ eksctl get cluster --name sunnyside-react-eks-cluster
 
 ### **5\. Deploy the React App to EKS**
 
-#### Step 1: Create Kubernetes Deployment and Service Files
+#### Edit the Kubernetes Deployment File
 
-1. **Edit the `deployment.yaml` file**: Paste in the image URI from AWS ECR
+  - **Edit the `deployment.yaml` file**: Paste in the image URI from AWS ECR
     
     ```yaml
     spec:
@@ -97,7 +97,7 @@ eksctl get cluster --name sunnyside-react-eks-cluster
 
 ---
 
-#### Step 2: Apply the Configurations
+#### Apply the Configurations
 
 1. Deploy the React app to Kubernetes:
     
