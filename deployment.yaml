@@ -1,21 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: react-app
-  labels:
-    app: react-app
+  name: sunnyside-react-app
+  namespace: default
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
-      app: react-app
+      app: sunnyside-react-app
   template:
     metadata:
       labels:
-        app: react-app
+        app: sunnyside-react-app
     spec:
       containers:
-      - name: react-app
-        image: <your-account-id>.dkr.ecr.<your-region>.amazonaws.com/sunnyside-react-app:latest
+      - name: sunnyside-react-container
+        image: <account-id>.dkr.ecr.<region>.amazonaws.com/sunnyside-react-app:latest
         ports:
         - containerPort: 80
