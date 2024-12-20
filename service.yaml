@@ -4,7 +4,7 @@ metadata:
   name: react-app-service
 spec:
   selector:
-    app: react-app
+    app: sunnyside-react-app
   ports:
   - protocol: TCP
     port: 80
