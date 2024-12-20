@@ -115,7 +115,8 @@ eksctl get cluster --name sunnyside-react-eks-cluster
 3. Verify the deployment and service:
     
     ```bash    
-    kubectl get pods kubectl get services
+    kubectl get pods
+    kubectl get services
     ```
     
 
