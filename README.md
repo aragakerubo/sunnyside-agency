@@ -16,7 +16,8 @@ Ensure you have:
 Clone the `chore-docker-setup` branch of the repository:
 
 ```bash
-git clone -b chore-docker-setup https://github.com/aragakerubo/sunnyside-agency.git cd sunnyside-agency
+git clone -b chore-docker-setup https://github.com/aragakerubo/sunnyside-agency.git
+cd sunnyside-agency
 ```
 
 ---
